@@ -13,13 +13,13 @@ def index():
 
 @home.route('/read')
 def read():
-    data = models.tbl_entity.query.all()
+    data = models.entity.query.all()
 
     return render_template('read.html', data=data)
 
 @home.route('/delete')
 def delete():
-    data = models.tbl_entity.query.all()
+    data = models.entity.query.all()
 
     return render_template('delete.html', data=data)
 
@@ -29,17 +29,17 @@ def delete_submit():
     if request.method == 'POST':
         if request.form["entity_id"]:
             a = request.form.getlist("entity_id")
-            models.tbl_entity.query.filter(models.tbl_entity.id.in_(a)).delete(synchronize_session='fetch')
+            models.entity.query.filter(models.entity.id.in_(a)).delete(synchronize_session='fetch')
             db.session.commit()
 
-    data = models.tbl_entity.query.all()
+    data = models.entity.query.all()
 
     return render_template('read.html', data=data)
 
 
 @home.route('/update')
 def update():
-    data = models.tbl_entity.query.all()
+    data = models.entity.query.all()
 
     return render_template('modify.html', data=data)
 
@@ -55,12 +55,12 @@ def update_submit():
             lastnames = request.form.getlist("entity_lastname")
 
             for cnt, id in enumerate(ids):
-                entity = models.tbl_entity.query.filter_by(id = id).first()
+                entity = models.entity.query.filter_by(id = id).first()
                 entity.name = names[cnt]
                 entity.lastname = lastnames[cnt]
                 db.session.commit()
 
-    data = models.tbl_entity.query.all()
+    data = models.entity.query.all()
 
     return render_template('read.html', data=data)
 
@@ -75,7 +75,7 @@ def create():
         lastname = form.lastname.data
         form.name.data = ''
         form.lastname.data = ''
-        entity = models.tbl_entity(name=name, lastname=lastname)
+        entity = models.entity(name=name, lastname=lastname)
         db.session.add(entity)
         db.session.commit()
 
