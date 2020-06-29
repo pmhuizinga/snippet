@@ -21,7 +21,7 @@ def create_app(config_name='default'):
     migrate = Migrate(app, db)
 
     from .home import home as home_blueprint
-    app.register_blueprint(home_blueprint, url_prefix="/home")
+    app.register_blueprint(home_blueprint, url_prefix="/")
     print('Create app successfull')
 
     return app
