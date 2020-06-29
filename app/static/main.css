@@ -1,0 +1,10 @@
+body {
+    margin-left: 50px;
+    font-family: Consolas;
+    font-size: 10pt;
+}
+div.menu{
+    font-family: Consolas;
+    font-size: 11pt;
+    font-weight: bold;
+}

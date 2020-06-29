@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div> Read Data</div>
+        <br>
+    {% for ent in data %}
+        <div>{{ ent.name }} {{ ent.lastname }}</div>
+    {% endfor %}
+{% endblock %}

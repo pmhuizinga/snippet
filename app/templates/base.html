@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="{{url_for('static', filename='main.css', id=11)}}"/>
+        <title>CRUD test</title>
+    </head>
+    <body>
+        <div>
+            <img src="{{url_for('static', filename='aam_logo.jpg')}}" width="150"/>
+            <br/>
+        </div>
+        <div class="menu">
+            <p>
+            CRUD test:
+{#                <a href="{{ url_for('home.index') }}">Home new</a>#}
+            <a href="{{ url_for('home.index') }}">Home</a>
+            <a href="{{ url_for('home.create') }}">Create</a>
+            <a href="{{ url_for('home.read') }}">Read</a>
+            <a href="{{ url_for('home.update') }}">Update</a>
+            <a href="{{ url_for('home.delete') }}">Delete</a>
+            </p>
+        </div>
+        <hr>
+        {% block content %}{% endblock %}
+    </body>
+</html>

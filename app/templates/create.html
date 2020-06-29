@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div> Create Data </div>
+        <br>
+            <form method="post">
+                {{ form.hidden_tag() }}
+                {{ form.name.label }} {{ form.name(size=20) }}
+                {{ form.lastname.label }} {{ form.lastname(size=20) }}
+                {{ form.submit() }}
+            {% for message in form.name.errors %}
+            {{ message }}
+            {% endfor %}
+        </form>
+
+{% endblock %}
