@@ -1,4 +1,5 @@
 SETUP
+- add virtual environment
 - add database connection in config.py, class Config (SQLALCHEMY_DATABASE_URI)
 - create models (tables) in app/models.py
 - create folder in CRUD/migrations
