@@ -1,6 +1,6 @@
 from flask import request, render_template, redirect, url_for
 from app import db, models
-from .forms import CreateForm
+from .forms import CreateForm, CreatePlace
 
 from . import home
 
@@ -16,6 +16,7 @@ def read():
     data = models.entity.query.all()
 
     return render_template('read.html', data=data)
+
 
 @home.route('/delete')
 def delete():
@@ -46,7 +47,6 @@ def update():
 
 @home.route('/update_submit', methods=['GET', 'POST'])
 def update_submit():
-
     if request.method == 'POST':
 
         if request.form["entity_id"]:
@@ -55,7 +55,7 @@ def update_submit():
             lastnames = request.form.getlist("entity_lastname")
 
             for cnt, id in enumerate(ids):
-                entity = models.entity.query.filter_by(id = id).first()
+                entity = models.entity.query.filter_by(id=id).first()
                 entity.name = names[cnt]
                 entity.lastname = lastnames[cnt]
                 db.session.commit()
@@ -81,4 +81,22 @@ def create():
 
         return redirect(url_for('home.read'))
 
-    return render_template('create.html', form=form)
+    places = models.place.query.all()
+
+    return render_template('create.html', form=form, data=places)
+
+@home.route('/create_place', methods=['GET', 'POST'])
+def create_place():
+    name = None
+    form = CreatePlace()
+
+    if form.validate():
+        place = form.place.data
+        form.place.data = ''
+        place = models.place(place=place)
+        db.session.add(place)
+        db.session.commit()
+
+        return redirect(url_for('home.read'))
+
+    return render_template('create_place.html', form=form)
