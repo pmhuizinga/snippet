@@ -5,20 +5,14 @@
     <br>
     <form method="post">
         {{ form.hidden_tag() }}
-        {{ form.name.label }} {{ form.name(size=20) }}
-        {{ form.lastname.label }} {{ form.lastname(size=20) }}
-        {#                {{ form.place_id.label }} {{ form.place_id() }}#}
-        <select id="place_id">
-            {% for place in data %}
-                <option value="{{ place.id }}">{{ place.place }}</option>
-                {#                        <div>{{ place.id }} {{ place.place }}</div>#}
-            {% endfor %}
-        </select>
+        {{ form.name.label }} {{ form.name(size=20) }}<br>
+        {{ form.lastname.label }} {{ form.lastname(size=20) }}<br>
+        {{ form.place_id.label }} {{ form.place_id() }}<br>
         {{ form.submit() }}
-        {% for message in form.name.errors %}
-            {{ message }}
-        {% endfor %}
-
+    </form>
+    <br>
+     <form action="{{ url_for('home.create_place') }}" method="POST">
+        <input type="submit" value="create new place" />
     </form>
 
 {% endblock %}

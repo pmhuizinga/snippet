@@ -11,5 +11,10 @@
             {{ message }}
             {% endfor %}
         </form>
+        <br>
+         <form action="{{ url_for('home.create') }}">
+            <input type="submit" value="create new entity" />
+        </form>
+
 
 {% endblock %}
