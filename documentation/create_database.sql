@@ -1,5 +1,7 @@
 /*
 create sample database for testing CRUD transactions using Python Flask
+
+do not use!! the model is not up to date with the flask model
 */
 use CRUD
 

@@ -3,11 +3,15 @@
 {% block content %}
     <div> Update data</div>
 
-    <form action="{{ url_for('home.update_submit') }}" method="POST">
+    <form action="{{ url_for('home.update') }}" method="POST">
 
         {% for ent in data %}
 
-            <p><input name="entity_id" type='hidden' value="{{ ent.id }}"> <input name="entity_name" type="text" value="{{ ent.name }}"/> <input name="entity_lastname" type="text" value="{{ ent.lastname }}"/></p>
+            <p>
+            <input name="entity_id" type='hidden' value="{{ ent.id }}">
+            <input name="entity_name" type="text" value="{{ ent.name }}"/>
+            <input name="entity_lastname" type="text" value="{{ ent.lastname }}"/>
+            </p>
 
         {% endfor %}
 
