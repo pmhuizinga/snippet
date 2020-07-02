@@ -5,12 +5,13 @@
     <br>
     <form method="post">
         {{ form.hidden_tag() }}
-        {{ form.name.label }} {{ form.name(size=20) }}<br>
-        {{ form.lastname.label }} {{ form.lastname(size=20) }}<br>
-        {{ form.place_id.label }} {{ form.place_id() }}<br>
+        {{ form.name.label }} <br>
+        {{ form.name(size=20) }}<br>
+        {{ form.lastname.label }}<br> {{ form.lastname(size=20) }}<br>
+        {{ form.place_id.label }}<br> {{ form.place_id() }}<br><br>
         {{ form.submit() }}
     </form>
-    <br>
+
      <form action="{{ url_for('home.create_place') }}" method="POST">
         <input type="submit" value="create new place" />
     </form>
