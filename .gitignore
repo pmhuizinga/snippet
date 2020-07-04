@@ -4,3 +4,4 @@ migrations/
 
 # files
 config.py
+app.db
