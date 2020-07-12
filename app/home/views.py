@@ -80,17 +80,21 @@ def update():
         # populate html page
         data = models.entity.query.all()
         return render_template('modify.html', data=data)
+
     else:
         # database actions
         if request.form["entity_id"]:
             ids = request.form.getlist("entity_id")
             names = request.form.getlist("entity_name")
             lastnames = request.form.getlist("entity_lastname")
+            places = request.form.getlist("entity_place")
+            print(places)
 
             for cnt, id in enumerate(ids):
                 entity = models.entity.query.filter_by(id=id).first()
                 entity.name = names[cnt]
                 entity.lastname = lastnames[cnt]
+                entity.place_id = places[cnt]
                 db.session.commit()
 
     data = models.entity.query.all()
