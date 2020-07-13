@@ -9,7 +9,7 @@ logging.basicConfig(filename='log/homelog.log',
                     filemode='a',
                     format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
                     datefmt='%H:%M:%S',
-                    level=logging.DEBUG)
+                    level=logging.NOTSET)
 
 logger = logging.getLogger(__name__)  # initialize logger
 logger.handlers = []
@@ -65,6 +65,7 @@ def read():
         add_columns(models.entity.name,
                     models.entity.lastname,
                     models.place.place).all()
+
     return render_template('read.html', data=data2)
 
 
@@ -73,7 +74,15 @@ def delete():
     if request.method == 'GET':
         # populate html page
         data = models.entity.query.all()
-        return render_template('delete.html', data=data)
+
+        data2 = models.entity.query.join(models.place,
+                                         models.entity.place_id == models.place.id,
+                                         isouter=True). \
+            add_columns(models.entity.name,
+                        models.entity.lastname,
+                        models.place.place).all()
+
+        return render_template('delete.html', data=data2)
     else:
         # database actions (delete data)
         if request.form["entity_id"]:
@@ -90,8 +99,11 @@ def delete():
 def update():
     if request.method == 'GET':
         # populate html page
+        # data from entity table
         data = models.entity.query.all()
+        # data for populating the select boxes for 'places'
         places = [(row.id, row.place) for row in models.place.query.all()]
+
         return render_template('modify.html', data=data, places=places)
 
     else:
@@ -130,3 +142,12 @@ def create_place():
         return redirect(url_for('home.read'))
 
     return render_template('create_place.html', form=form)
+
+
+@home.route('/users', methods=['GET', 'POST'])
+def users():
+    return render_template('read.html')
+
+@home.route('/aws', methods=['GET'])
+def aws():
+    return render_template('aws.html')

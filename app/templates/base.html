@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>default flask with CRUD</title>
+    <title>Default Flask UI for CRUD transactions</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{url_for('static', filename='main.css', id=1)}}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -14,16 +14,19 @@
         <div>
             <img src="{{url_for('static', filename='aam_logo.jpg')}}" width="150"/>
             <br/>
+            <br/>
         </div>
         <div class="menu">
             <p>
-            CRUD test:
-            <a href="{{ url_for('home.index') }}">Home</a>
-            <a href="{{ url_for('home.create') }}">Create</a>
-            <a href="{{ url_for('home.read') }}">Read</a>
-            <a href="{{ url_for('home.update') }}">Update</a>
-            <a href="{{ url_for('home.delete') }}">Delete</a>
-            <a href="{{ url_for('home.create_place') }}">Create place</a>
+            <a href="{{ url_for('home.index') }}">Home</a> |
+            <a href="{{ url_for('home.create') }}">Create</a> |
+            <a href="{{ url_for('home.read') }}">Read</a> |
+            <a href="{{ url_for('home.update') }}">Update</a> |
+            <a href="{{ url_for('home.delete') }}">Delete</a> |
+            <a href="{{ url_for('home.create_place') }}">Places</a> |
+            <a href="{{ url_for('home.aws') }}">AWS</a> |
+{#            <a href="{{ url_for('home.users') }}">Users</a>#}
+
             </p>
         </div>
         <hr>

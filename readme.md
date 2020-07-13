@@ -1,6 +1,6 @@
 # Default Flask site for database interface
 
-The idea is to have a default flask web interface for CRUD transactions to a database.  
+The idea is to have a default flask web interface for a transactional database.  
 Users should only have to modify the datamodel (models.py) and the forms in order to easily create an interface.
 Ideally the forms should be generated automatically based on the datamodel.
 
