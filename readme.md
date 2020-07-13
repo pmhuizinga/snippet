@@ -12,9 +12,9 @@ Ideally the forms should be generated automatically based on the datamodel.
 - run create database commands:
 
   
-    ../CRUD/flask db init
-    ../CRUD/flask db migrate
-    ../CRUD/flask db upgrade
+    ../default_flask_ui/flask db init
+    ../default_flask_ui/flask db migrate
+    ../default_flask_ui/flask db upgradee
 
 
 - add forms data (corresponding to models.py) in case of data entry forms
