@@ -9,13 +9,12 @@ Ideally the forms should be generated automatically based on the datamodel.
 - add virtual environment
 - add database connection in config.py, class Config (SQLALCHEMY_DATABASE_URI)
 - create models (tables) in app/models.py
-- run create database commands:
+- run create database commands:    
 
-  
-    ../CRUD/flask db init
-    ../CRUD/flask db migrate
-    ../CRUD/flask db upgrade
-
+ 
+    ../default_flask_ui/flask db init
+    ../default_flask_ui/flask db migrate
+    ../default_flask_ui/flask db upgrade
 
 - add forms data (corresponding to models.py) in case of data entry forms
 - adjust views.py for handling CRUD transactions
