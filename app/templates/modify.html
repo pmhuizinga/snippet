@@ -11,10 +11,19 @@
             <input name="entity_id" type='hidden' value="{{ ent.id }}">
             <input name="entity_name" type="text" value="{{ ent.name }}"/>
             <input name="entity_lastname" type="text" value="{{ ent.lastname }}"/>
-            <input name="entity_place" type="text" value="{{ ent.place_id }}"/>
+            <select name="entity_place" id ="entity_place">
+                {% for place in places %}
+                    {% if place[0] == ent.place_id %}
+                        <option value="{{ place[0] }}" selected>{{ place[1] }}</option>
+                    {% else %}
+                        <option value="{{ place[0] }}">{{ place[1] }}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
             </p>
 
         {% endfor %}
+
 
         <input type="submit" value="Submit">
     </form>

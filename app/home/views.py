@@ -2,7 +2,17 @@ from flask import request, render_template, redirect, url_for
 from app import db, models
 from .forms import CreateForm, CreatePlace
 from . import home
+import logging
 
+# logging setup
+logging.basicConfig(filename='log/homelog.log',
+                    filemode='a',
+                    format='%(asctime)s,%(msecs)d %(name)s %(levelname)s %(message)s',
+                    datefmt='%H:%M:%S',
+                    level=logging.DEBUG)
+
+logger = logging.getLogger(__name__)  # initialize logger
+logger.handlers = []
 
 @home.route('/')
 @home.route('/index')
@@ -36,6 +46,8 @@ def create():
         db.session.commit()
 
     data = models.entity.query.all()
+
+    logger.debug(f'test logging')
 
     return render_template('read.html', data=data)
 
@@ -79,7 +91,8 @@ def update():
     if request.method == 'GET':
         # populate html page
         data = models.entity.query.all()
-        return render_template('modify.html', data=data)
+        places = [(row.id, row.place) for row in models.place.query.all()]
+        return render_template('modify.html', data=data, places=places)
 
     else:
         # database actions

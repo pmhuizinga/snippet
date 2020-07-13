@@ -13,7 +13,8 @@ class CreateForm(FlaskForm):
 class ModifyForm(FlaskForm):
     name = StringField('name', validators=[DataRequired()])
     lastname = StringField('lastname', validators=[DataRequired()])
-    place_id = IntegerField('place_id')
+    place_id = SelectField('place', validators=[DataRequired()])
+    # place_id = IntegerField('place_id')
     submit = SubmitField('Insert')
 
 

@@ -38,5 +38,5 @@ in case of database changes run:
     ../default_flask_ui/flask db migrate
     ../default_flask_ui/flask db upgrade
     
-Mgrate will extract all the settings from models.py  
+Migrate will extract all the settings from models.py  
 Upgrade will make the actual changes to the database
