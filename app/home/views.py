@@ -78,17 +78,24 @@ def delete():
         data2 = models.entity.query.join(models.place,
                                          models.entity.place_id == models.place.id,
                                          isouter=True). \
-            add_columns(models.entity.name,
+            add_columns(models.entity.id,
+                        models.entity.name,
                         models.entity.lastname,
                         models.place.place).all()
 
+        print('method is get')
+
         return render_template('delete.html', data=data2)
     else:
+        print('entity_id: {}'.format(request.form["entity_id"]))
         # database actions (delete data)
         if request.form["entity_id"]:
             a = request.form.getlist("entity_id")
+
             models.entity.query.filter(models.entity.id.in_(a)).delete(synchronize_session='fetch')
             db.session.commit()
+
+        print('method is not get')
 
     data = models.entity.query.all()
 
