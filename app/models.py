@@ -1,25 +1,41 @@
 from app import db
 
-class entity(db.Model):
+class language(db.Model):
 
-    __tablename__ = 'entities'
+    __tablename__ = 'language'
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), index=True, unique=False)
-    lastname = db.Column(db.String(50), index=True, unique=False)
-    place_id = db.Column(db.Integer, db.ForeignKey('places.id'))
 
     def __repr__(self):
-        return '{}, {}, {}'.format(self.name, self.lastname, self.place_id)
+        return '{}'.format(self.name)
 
 
-class place(db.Model):
+class user(db.Model):
 
-    __tablename__ = 'places'
+    __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)
-    place = db.Column(db.String(30), index=True, unique=True)
-    entity = db.relationship('entity', backref='place', lazy='dynamic')
+    name = db.Column(db.String(50), index=True, unique=False)
 
     def __repr__(self):
-        return '{}'.format(self.place)
+        return '{}'.format(self.name)
+
+
+class snippet(db.Model):
+
+    __tablename__ = 'snippet'
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    language_id = db.Column(db.Integer, db.ForeignKey('language.id'))
+    tag = db.Column(db.String(100), index=True, unique=False)
+    snippet = db.Column(db.String(300), unique=False)
+    # language = db.relationship('language', backref=backref('snippet', lazy='dynamic'))
+    # language = db.relationship('language', backref='snippet', lazy='dynamic')
+    language = db.relationship('language', backref='snippet')
+    # user = db.relationship('user', backref='snippet', lazy='dynamic')
+    user = db.relationship('user', backref='snippet')
+
+    def __repr__(self):
+        return '{}'.format(self.snippet)

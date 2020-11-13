@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div> Create Place </div>
+    <br>
+        <form method="post">
+            {{ form.hidden_tag() }}
+            {{ form.user.label }} {{ form.user(size=40) }}
+            {{ form.submit() }}
+        {% for message in form.user.errors %}
+        {{ message }}
+        {% endfor %}
+    </form>
+
+{% endblock %}

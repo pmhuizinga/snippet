@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Default Flask UI for CRUD transactions</title>
+    <title>Programming snippets</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{url_for('static', filename='main.css', id=1)}}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -12,19 +12,22 @@
     </head>
     <body class="body">
         <div>
-            <img src="{{url_for('static', filename='aam_logo.jpg')}}" width="150"/>
+{#            <img src="{{url_for('static', filename='aam_logo.jpg')}}" width="150"/>#}
+            <h1>CODE SNIPPETS</h1>
             <br/>
             <br/>
         </div>
         <div class="menu">
             <p>
             <a href="{{ url_for('home.index') }}">Home</a> |
-            <a href="{{ url_for('home.create') }}">Create</a> |
-            <a href="{{ url_for('home.read') }}">Read</a> |
-            <a href="{{ url_for('home.update') }}">Update</a> |
-            <a href="{{ url_for('home.delete') }}">Delete</a> |
-            <a href="{{ url_for('home.create_place') }}">Places</a> |
-            <a href="{{ url_for('home.aws') }}">AWS</a> |
+            <a href="{{ url_for('home.create_snippet') }}">Create snippet</a> |
+            <a href="{{ url_for('home.create_user') }}">Create user</a> |
+            <a href="{{ url_for('home.create_language') }}">Create language</a> |
+{#            <a href="{{ url_for('home.read') }}">Read</a> |#}
+{#            <a href="{{ url_for('home.update') }}">Update</a> |#}
+{#            <a href="{{ url_for('home.delete') }}">Delete</a> |#}
+{#            <a href="{{ url_for('home.create_place') }}">Places</a> |#}
+{#            <a href="{{ url_for('home.aws') }}">AWS</a> |#}
 {#            <a href="{{ url_for('home.users') }}">Users</a>#}
 
             </p>

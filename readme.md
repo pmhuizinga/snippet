@@ -1,14 +1,14 @@
-# Default Flask site for database interface
+# Code snippet database
 
-The idea is to have a default flask web interface for a transactional database.  
-Users should only have to modify the datamodel (models.py) and the forms in order to easily create an interface.
-Ideally the forms should be generated automatically based on the datamodel.
+Store code snippets and allow users to search on programming language, user and taga
+
 
 ### SETUP
 
 - add virtual environment
 - add database connection in config.py, class Config (SQLALCHEMY_DATABASE_URI)
 - create models (tables) in app/models.py
+- create log folder
 - run create database commands:
 
   

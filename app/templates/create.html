@@ -1,19 +1,36 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div> Create Data</div>
+    <div> Create Snippet</div>
     <br>
     <form method="post">
         {{ form.hidden_tag() }}
-        {{ form.name.label }} <br>
-        {{ form.name(size=20) }}<br>
-        {{ form.lastname.label }}<br> {{ form.lastname(size=20) }}<br>
-        {{ form.place_id.label }}<br> {{ form.place_id() }}<br><br>
+        <table>
+            <tr>
+                <td>{{ form.user.label }}</td>
+                <td>{{ form.user() }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.language.label }}</td>
+                <td>{{ form.language() }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.tag.label }}</td>
+                <td>{{ form.tag(size=40) }}</td>
+            </tr>
+            <tr>
+                <td> {{ form.snippet.label }} </td>
+                <td>{{ form.snippet(size=40) }}</td>
+            </tr>
+        </table>
+           <br>
+         <br>
+         <br>
+        <br>
         {{ form.submit() }}
-    </form>
-
-     <form action="{{ url_for('home.create_place') }}" method="POST">
-        <input type="submit" value="create new place" />
+        {% for message in form.language.errors %}
+            {{ message }}
+        {% endfor %}
     </form>
 
 {% endblock %}
