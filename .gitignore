@@ -3,8 +3,6 @@ venv/
 migrations/
 
 # files
-config.py
-app.db
 aws.txt
 pycharm_aws_flask_default.pem
 
